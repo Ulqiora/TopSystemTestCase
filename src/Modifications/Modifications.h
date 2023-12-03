@@ -1,15 +1,13 @@
 #pragma once
-namespace Modify{
 struct Rotate{
-    using Angle = double;
-    Angle x,y;
+    using Angle = float;
+    Angle x,y,z;
 };
 struct Position{
-    using SizeShift = double;
-    SizeShift x,y;
+    using SizeShift = float;
+    SizeShift x,y,z;
 };
 struct Scale{
-    using Size = double;
-    Size x,y;
+    using Size = float;
+    Size x,y,z;
 };
-}
