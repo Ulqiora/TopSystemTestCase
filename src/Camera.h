@@ -1,6 +1,6 @@
 #pragma once
 #include <memory>
-#include "SceneObject.h"
+#include "SceneModels/SceneObject.h"
 #include "Modifications/Modifications.h"
 //#define GLM_FORCE_MESSAGES
 #include <glm/vec3.hpp>
@@ -18,19 +18,15 @@ namespace CameraConsts{
     constexpr YawEalerAngle kYaw       = -90.0f;
     constexpr PitchEalerAngle kPitch   =  0.0f;
 };
-class Camera : public SceneObject{
+class Camera : public Observable{
 public:
     explicit Camera(Position&&,
-//                    WorldPosition&& = Position{},
                     WorldUpDirection&& = WorldUpDirection{},
                     YawEalerAngle&& = YawEalerAngle{CameraConsts::kYaw},
                     PitchEalerAngle&& = PitchEalerAngle{CameraConsts::kPitch});
-    void SetPosition(Position&&) override;
-    void SetRotation(Rotate&&)override;
+    void SetPosition(Position&&) ;
     glm::mat4 GetViewMatrix();
-    void Draw(IDrawer&)override;
     void UpdateVectors();
-
 private:
     glm::vec3 cameraPosition;
 //    glm::vec3 worldPoint;
@@ -38,7 +34,7 @@ private:
     YawEalerAngle yaw;
     PitchEalerAngle pitch;
     // vector's of Camera Directions
-    glm::vec3 FrontDirection;
-    glm::vec3 RightDirection;
-    glm::vec3 UpDirection;
+    glm::vec3 FrontDirection{};
+    glm::vec3 RightDirection{};
+    glm::vec3 UpDirection{};
 };

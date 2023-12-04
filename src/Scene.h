@@ -1,6 +1,6 @@
 #pragma once
 #include <vector>
-#include "Figure.h"
+#include "SceneModels/Figure.h"
 using FigureIndex = size_t;
 class Scene{
 public:

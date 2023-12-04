@@ -1,5 +1,5 @@
-#include "Observable.h"
-#include "Observer.h"
+#include "../include/Observable.h"
+#include "../include/Observer.h"
 void Observable::Notify() {
     for(auto&& [_,function]:observers){
         function();
