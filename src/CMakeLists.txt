@@ -9,6 +9,7 @@ add_executable(${PROJECT_NAME} main.cpp Figure.h Scene.h Modifications/Modificat
         SceneObject.cpp
         SceneObject.h
         Observer/Observable.h
-        Observer/Observer.h)
+        Observer/Observer.h
+        Observer/Observable.cpp)
 
 #target_link_libraries(${PROJECT_NAME} glm)

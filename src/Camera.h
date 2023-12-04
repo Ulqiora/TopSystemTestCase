@@ -30,6 +30,7 @@ public:
     glm::mat4 GetViewMatrix();
     void Draw(IDrawer&)override;
     void UpdateVectors();
+
 private:
     glm::vec3 cameraPosition;
 //    glm::vec3 worldPoint;

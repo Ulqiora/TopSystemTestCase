@@ -35,6 +35,7 @@ void Camera::UpdateVectors() {
     };
     RightDirection = glm::normalize(glm::cross(FrontDirection,worldUp));
     UpDirection = glm::normalize(glm::cross(RightDirection, FrontDirection));;
+    Notify();
 }
 
 glm::mat4 Camera::GetViewMatrix() {

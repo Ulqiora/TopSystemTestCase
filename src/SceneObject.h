@@ -6,9 +6,10 @@
 #define TOPSYSTEMTESTCASE_SCENEOBJECT_H
 #include <memory>
 #include "Modifications/Modifications.h"
+#include "Observer/Observable.h"
 class IDrawer;
 
-class SceneObject {
+class SceneObject : public Observable{
 public:
     virtual void SetPosition(Position&&) = 0;
     virtual void SetRotation(Rotate&&) = 0;
