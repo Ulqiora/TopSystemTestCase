@@ -8,4 +8,3 @@ add_subdirectory(src)
 #find_package(glm REQUIRED)
 
 
-target_link_libraries(MainProject PUBLIC glm)

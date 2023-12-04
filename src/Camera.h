@@ -1,7 +1,8 @@
 #pragma once
 #include <memory>
 #include "SceneModels/SceneObject.h"
-#include "Modifications/Modifications.h"
+#include <Observable.h>
+#include "SceneModels/Modifications.h"
 //#define GLM_FORCE_MESSAGES
 #include <glm/vec3.hpp>
 #include <glm/gtc/matrix_transform.hpp>

@@ -1,6 +1,7 @@
 #pragma once
 #include <memory>
 #include "SceneObject.h"
+#include <Observable.h>
 class IDrawer;
 
 namespace Model{

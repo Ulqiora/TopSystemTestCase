@@ -5,8 +5,7 @@
 #ifndef TOPSYSTEMTESTCASE_SCENEOBJECT_H
 #define TOPSYSTEMTESTCASE_SCENEOBJECT_H
 #include <memory>
-#include "../Modifications/Modifications.h"
-#include "Observer/include/Observable.h"
+#include "Modifications.h"
 class IDrawer;
 
 class SceneObject{

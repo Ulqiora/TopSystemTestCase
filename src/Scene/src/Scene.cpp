@@ -1,4 +1,4 @@
-#include "Scene.h"
+#include "../include/Scene.h"
 
 
 void Scene::AddFigure(Model::FigurePtr &&) {
