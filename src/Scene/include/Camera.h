@@ -1,11 +1,9 @@
 #pragma once
 #include <memory>
-#include "SceneModels/SceneObject.h"
-#include <Observable.h>
-#include "SceneModels/Modifications.h"
-//#define GLM_FORCE_MESSAGES
-#include <glm/vec3.hpp>
-#include <glm/gtc/matrix_transform.hpp>
+#include "Modifications.h"
+#include "Observable.h"
+#include "glm/vec3.hpp"
+#include "glm/gtc/matrix_transform.hpp"
 
 
 using YawEalerAngle = float;
@@ -39,3 +37,4 @@ private:
     glm::vec3 RightDirection{};
     glm::vec3 UpDirection{};
 };
+using CameraPtr = std::shared_ptr<Camera>;

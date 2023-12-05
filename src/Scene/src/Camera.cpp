@@ -1,5 +1,5 @@
 #include "Camera.h"
-#include "SceneModels/Modifications.h"
+#include "Modifications.h"
 
 void Camera::SetPosition(Position &&position) {
 

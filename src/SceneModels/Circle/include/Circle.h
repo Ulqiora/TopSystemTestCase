@@ -1,8 +1,0 @@
-//
-// Created by ccnc on 12/1/23.
-//
-
-#ifndef TOPSYSTEMTESTCASE_CIRCLE_H
-#define TOPSYSTEMTESTCASE_CIRCLE_H
-
-#endif //TOPSYSTEMTESTCASE_CIRCLE_H

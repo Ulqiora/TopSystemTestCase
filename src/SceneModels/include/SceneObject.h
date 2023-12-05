@@ -1,9 +1,4 @@
-//
-// Created by ccnc on 12/3/23.
-//
-
-#ifndef TOPSYSTEMTESTCASE_SCENEOBJECT_H
-#define TOPSYSTEMTESTCASE_SCENEOBJECT_H
+#pragma once
 #include <memory>
 #include "Modifications.h"
 class IDrawer;
@@ -16,4 +11,3 @@ public:
 };
 
 
-#endif //TOPSYSTEMTESTCASE_SCENEOBJECT_H

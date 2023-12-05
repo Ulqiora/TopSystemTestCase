@@ -1,6 +1,10 @@
 #pragma once
 #include <vector>
-#include "../../SceneModels/Figure.h"
+#include <Figure.h>
+
+class Camera;
+using CameraPtr = std::shared_ptr<Camera>;
+
 using FigureIndex = size_t;
 class Scene{
 public:
@@ -9,4 +13,5 @@ public:
     void Draw(IDrawer&);
 private:
     std::vector<Model::FigurePtr> models_;
+    CameraPtr camera_;
 };
