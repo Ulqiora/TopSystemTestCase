@@ -18,12 +18,14 @@ public:
     WindowRendering(std::size_t height,std::size_t width);
     bool Execute();
     void AddCircle();
+    void AddTriangle();
+    ~WindowRendering() = default;
 private:
-    void ResetAllColor();
+    static void ResetAllColor();
     void Update();
 private:
-    std::size_t height_;
-    std::size_t width_;
+    int height_;
+    int width_;
     ScenePtr scene;
     IDrawerPtr drawer;
 //    GLFWwindow* window;

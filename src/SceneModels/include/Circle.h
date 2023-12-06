@@ -3,7 +3,7 @@
 #include "glm/vec3.hpp"
 #include "IFigure.h"
 #include <Observable.h>
-
+#include <Buffer.h>
 class BufferGeneratorGL;
 using Radius = float;
 
@@ -20,6 +20,6 @@ public:
 private:
     static const size_t PointsOnCircle = 30;
     std::vector<glm::vec3> points_;
-    unsigned int VAO{};
-    unsigned int VBO{};
+    Indices indices_;
+    Buffers buffers_;
 };

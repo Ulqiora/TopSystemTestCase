@@ -3,25 +3,19 @@
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 
-const char* vertexShader = R"(~
-#version 330 core
+const char* vertexShader = "#version 330 core\n"
+                           "layout (location = 0) in vec3 position;\n"
+                           "void main()\n"
+                           "{\n"
+                           "    gl_Position = vec4(position.x, position.y, position.z, 1.0);\n"
+                           "}\n";
 
-layout(location = 0) in vec4 position;
-
-void main(){
-    gl_Position = position;
-}
-~)";
-
-const char* fragmentShader = R"(~
-#version 330 core
-
-layout(location = 0) out vec4 color;
-
-void main(){
-    color = vec4(1.0,0.0,0.0,1.0);
-}
-~)";
+const char* fragmentShader = "#version 330 core\n"
+                             "out vec4 color;\n"
+                             "void main()\n"
+                             "{\n"
+                             "    color = vec4(1.0f, 0.5f, 0.2f, 1.0f);\n"
+                             "}\n";
 
 void IDrawer::DrawScene(ScenePtr scene){
     scene->Draw(getPtrFromThis());
@@ -36,14 +30,11 @@ const BufferGeneratorGL &IDrawer::GetGeneratorBuffer() {
     return generator;
 }
 
-void IDrawer::DrawPoints(VAOBuffer vao,VBOBuffer vbo) {
+void IDrawer::DrawPoints(const Buffers& buffers,size_t size) {
     glUseProgram(program_.getID());
-    glBindVertexArray(vao);
-    glBindBuffer(GL_ARRAY_BUFFER, vbo);
-    glDrawElements(GL_TRIANGLE_FAN, 6, GL_UNSIGNED_INT, 0);
-//    glDrawArrays(GL_TRIANGLES, 0, 6);
+    glBindVertexArray(buffers.vao);
+    glDrawElements(GL_LINE_STRIP, size, GL_UNSIGNED_INT, 0);
     glBindVertexArray(0);
-    glUseProgram(0);
 }
 
 IDrawer::IDrawer()= default;

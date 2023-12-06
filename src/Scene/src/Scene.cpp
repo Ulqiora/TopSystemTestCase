@@ -7,11 +7,11 @@ void Scene::AddFigure(FigurePtr && model) {
 }
 
 void Scene::RemoveFigure(FigureIndex id) {
-
+    models_.erase(models_.cbegin()+id);
 }
 
 void Scene::Draw(IDrawerPtr drawer) {
-    drawer->SetCamera(camera_);
+//    drawer->SetCamera(camera_);
     for(const auto& model:models_){
         model->Draw(drawer);
     }

@@ -6,19 +6,13 @@
 #define TOPSYSTEMTESTCASE_BUFFERGENERATORGL_H
 #include "glm/vec3.hpp"
 #include <vector>
-using VAOBuffer = unsigned int;
-using VBOBuffer = unsigned int;
-using EBOBuffer = unsigned int;
-struct Buffers{
-    VAOBuffer vao;
-    VBOBuffer vbo;
-    EBOBuffer ebo;
-};
+#include "Buffer.h"
+
 
 class BufferGeneratorGL {
 public:
     [[nodiscard("if the buffer has not been saved, then they will not be cleaned up")]]
-    Buffers Generate(const std::vector<glm::vec3>&)const;
+    Buffers Generate(const std::vector<glm::vec3>&, const std::vector<unsigned int>&)const;
 };
 
 

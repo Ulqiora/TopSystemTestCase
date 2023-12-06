@@ -5,10 +5,11 @@
 #include <cmath>
 #include <BufferGeneratorGL.h>
 #include <IDrawer.h>
+#include <numeric>
 static float Pi2Const = 2.0f * M_PI;
 
 void Circle::Draw(IDrawerPtr drawer) {
-    drawer->DrawPoints(VAO,VBO);
+    drawer->DrawPoints(buffers_,indices_.size());
 }
 
 Circle::Circle( const BufferGeneratorGL & generator, Radius radius, CirclePoints points) {
@@ -16,13 +17,15 @@ Circle::Circle( const BufferGeneratorGL & generator, Radius radius, CirclePoints
     for(CirclePoints pointIndex = 0;pointIndex<points;pointIndex++){
         points_.emplace_back(
                 radius * cosf(static_cast<float>(pointIndex) * Pi2Const/static_cast<float>(points)),
-                radius * cosf(static_cast<float>(pointIndex) * Pi2Const/static_cast<float>(points)),
+                radius * sinf(static_cast<float>(pointIndex) * Pi2Const/static_cast<float>(points)),
                 0
         );
     }
-    auto buffers = generator.Generate(points_);
-    VAO = buffers.vao;
-    VBO = buffers.vbo;
+    indices_.resize(points);
+    std::iota(indices_.begin(),indices_.end(),0);
+    indices_.push_back(0);
+    buffers_ = generator.Generate(points_,indices_);
+
 }
 
 void Circle::SetPosition(Position && position) {
