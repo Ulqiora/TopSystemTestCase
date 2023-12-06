@@ -13,6 +13,7 @@ void Temp::update() {
 
 int main() {
     WindowRendering tep(800,800);
+    tep.AddCircle();
     tep.Execute();
     auto camera = std::make_shared<Camera>(Position{0.0,0.0,3.0});
     auto temp = std::make_shared<Temp>();

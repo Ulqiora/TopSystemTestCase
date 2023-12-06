@@ -24,3 +24,4 @@ target_include_directories( ${PROJECT_NAME}
         $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>
 )
 target_link_libraries( ${PROJECT_NAME} PUBLIC ObserverLibrary glm)
+target_link_libraries( ${PROJECT_NAME} PRIVATE Drawer)

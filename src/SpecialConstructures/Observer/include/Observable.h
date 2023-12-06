@@ -17,6 +17,7 @@ public:
     void AddSubscriber(ObserverPtr ,FunctionType,Args...);
     void RemoveSubscriber(const ObserverPtr&);
     void Notify();
+    virtual ~Observable()= default;
 private:
     std::map<ObserverPtr,SavedFunction> observers;
 };

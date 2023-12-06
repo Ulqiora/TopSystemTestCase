@@ -1,17 +1,18 @@
 #pragma once
 #include <vector>
-#include <Figure.h>
-
+#include <IFigure.h>
+#include <IDrawer.h>
 class Camera;
 using CameraPtr = std::shared_ptr<Camera>;
 
 using FigureIndex = size_t;
 class Scene{
 public:
-    void AddFigure(Model::FigurePtr&&);
+    void AddFigure(FigurePtr&&);
     void RemoveFigure(FigureIndex);
-    void Draw(IDrawer&);
+    void Draw(IDrawerPtr);
 private:
-    std::vector<Model::FigurePtr> models_;
+    std::vector<FigurePtr> models_;
     CameraPtr camera_;
 };
+using ScenePtr = std::shared_ptr<Scene>;

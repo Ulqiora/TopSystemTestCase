@@ -4,33 +4,30 @@
 
 #ifndef TOPSYSTEMTESTCASE_WINDOWRENDERING_H
 #define TOPSYSTEMTESTCASE_WINDOWRENDERING_H
+#include <glad/glad.h>
+#include <GLFW/glfw3.h>
+#include "WindowGLWrapper.h"
+#include <IDrawer.h>
+#include <Scene.h>
 #include <cstdint>
 #include <memory>
 #include <iostream>
-#include <GLFW/glfw3.h>
-struct glfwDeleter
-{
-    void operator()(GLFWwindow *wnd)
-    {
-        std::cout << "Destroying GLFW Window Context" << std::endl;
-        glfwDestroyWindow(wnd);
-    }
-};
+
 class WindowRendering {
 public:
     WindowRendering(std::size_t height,std::size_t width);
     bool Execute();
+    void AddCircle();
 private:
     void ResetAllColor();
-    struct glfwDeleter {
-        void operator()(GLFWwindow *wnd) {
-            std::cout << "Destroying GLFW Window Context" << std::endl;
-            glfwDestroyWindow(wnd);
-        }
-    };
+    void Update();
+private:
     std::size_t height_;
     std::size_t width_;
-    std::unique_ptr<GLFWwindow, glfwDeleter> window;
+    ScenePtr scene;
+    IDrawerPtr drawer;
+//    GLFWwindow* window;
+    WindowPtr window;
 };
 
 
