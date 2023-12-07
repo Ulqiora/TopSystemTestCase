@@ -1,45 +1,29 @@
 #include "IDrawer.h"
-#include <Scene.h>
-#include <glad/glad.h>
-#include <GLFW/glfw3.h>
 
-const char* vertexShader = "#version 330 core\n"
-                           "layout (location = 0) in vec3 position;\n"
-                           "void main()\n"
-                           "{\n"
-                           "    gl_Position = vec4(position.x, position.y, position.z, 1.0);\n"
-                           "}\n";
+#include <utility>
+#include "DrawerOpenGl.h"
+#include "Buffer.h"
 
-const char* fragmentShader = "#version 330 core\n"
-                             "out vec4 color;\n"
-                             "void main()\n"
-                             "{\n"
-                             "    color = vec4(1.0f, 0.5f, 0.2f, 1.0f);\n"
-                             "}\n";
+IDrawer::IDrawer() : impl(std::make_shared<DrawerOpenGl>()){
 
-void IDrawer::DrawScene(ScenePtr scene){
-    scene->Draw(getPtrFromThis());
 }
-void IDrawer::SetCamera(CameraPtr camera){}
 
-IDrawerPtr IDrawer::getPtrFromThis() {
-    return shared_from_this();
+void IDrawer::SetShaderProgram(ShaderProgramType type) {
+    impl->SetShaderProgram(type);
+}
+
+void IDrawer::SetCamera(CameraPtr camera) {
+    impl->SetCamera(std::move(camera));
+}
+
+void IDrawer::DrawPoints(Buffers buffer, size_t size) {
+    impl->DrawPoints(buffer,size);
 }
 
 const BufferGeneratorGL &IDrawer::GetGeneratorBuffer() {
-    return generator;
+    return impl->GetGeneratorBuffer();
 }
 
-void IDrawer::DrawPoints(const Buffers& buffers,size_t size) {
-    glUseProgram(program_.getID());
-    glBindVertexArray(buffers.vao);
-    glDrawElements(GL_LINE_STRIP, size, GL_UNSIGNED_INT, 0);
-    glBindVertexArray(0);
+unsigned int IDrawer::GetIdShaderId() {
+    return impl->GetIdShaderId();
 }
-
-IDrawer::IDrawer()= default;
-
-void IDrawer::SetShaderProgram(ShaderProgramType type) {
-    if(type == ShaderProgramType::kDefault) program_ = ShaderProgram{vertexShader,fragmentShader};
-}
-//        camera.
