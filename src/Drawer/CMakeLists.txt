@@ -1,0 +1,23 @@
+cmake_minimum_required(VERSION 3.22)
+project("Drawer")
+set(CMAKE_CXX_STANDARD 20)
+
+file(GLOB SOURCES
+        ${CMAKE_CURRENT_SOURCE_DIR}/src/*.cpp
+)
+file(GLOB HEADERS
+        ${CMAKE_CURRENT_SOURCE_DIR}/include/*.h
+)
+
+add_library(${PROJECT_NAME} STATIC ${HEADERS} ${SOURCES})
+
+target_include_directories( ${PROJECT_NAME}
+        PRIVATE
+        ${CMAKE_CURRENT_SOURCE_DIR}/include
+        ${CMAKE_CURRENT_SOURCE_DIR}/src
+        PUBLIC
+        $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
+        $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>
+)
+target_link_libraries( ${PROJECT_NAME} PUBLIC SceneModels SceneLibrary glfw glad)
+target_link_libraries( ${PROJECT_NAME} PRIVATE glm)
